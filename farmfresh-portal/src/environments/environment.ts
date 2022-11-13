@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urls: {
+    api_base_url: "https://localhost:5129/",
+    auth_server_url: "https://localhost:7273/",
+  },
 };
 
 /*

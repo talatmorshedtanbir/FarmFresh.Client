@@ -19,7 +19,7 @@ export class AuthService {
   constructor(private httpClient: HttpClientService,
     private authCacheService: AuthCacheService,
     private router: Router,) {
-    this.url = "" //environment.urls.auth_server_url+"api/v1/auth";
+    this.url = environment.urls.auth_server_url+"api/v1/auth";
   }
 
   authenticationUser(userDetails : any) {
