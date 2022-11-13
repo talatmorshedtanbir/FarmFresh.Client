@@ -1,0 +1,13 @@
+<!--Main Navigation-->
+<header>
+    <farmfresh-header></farmfresh-header>
+</header>
+<body>
+    <main class="container-fluid">
+        <farmfresh-sidebar (onMenuChange)="toggleMenu()" [sideMenuClass]="sideMenuClass"></farmfresh-sidebar>  
+        <div [class]="bodyClass" class="pt-3 ps-3">
+          <router-outlet></router-outlet>
+        </div>
+    </main>
+</body>
+  

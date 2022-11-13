@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+.invalid-form {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #dc3545; 
+}
+
+.title {
+    display: inline-block;
+    font-size: 28px;
+    padding: 6px 10px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+@media (max-width: 1199.98px) {
+    .title {
+        font-size: 18px;
+    }
+}
