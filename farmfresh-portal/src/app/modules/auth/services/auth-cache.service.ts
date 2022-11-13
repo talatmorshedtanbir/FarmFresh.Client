@@ -38,4 +38,8 @@ export class AuthCacheService {
   getToken() {
     return this.cacheService.getItem('token')!;
   }
+
+  setToken(token:string) {
+    this.cacheService.setItem('token', token);
+  }
 }

@@ -1,9 +1,11 @@
+import { LoginResponse } from './../../models/login-response';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { FormValidationService } from 'src/app/modules/shared/utilities/form-validation';
 import { AuthCacheService } from '../../services/auth-cache.service';
+import { AuthService } from '../../services/auth.service';
 import { loginInFormValidationMessages } from '../../utilities/validations/login-form-validation';
 
 @Component({
@@ -39,7 +41,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private formValidator: FormValidationService,
-    private authCacheService: AuthCacheService
+    private authCacheService: AuthCacheService,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
@@ -68,7 +71,7 @@ export class LoginComponent implements OnInit {
   }
 
   resendVerificationEmail() {
-    
+
   }
 
   login() {
@@ -81,17 +84,19 @@ export class LoginComponent implements OnInit {
       };
       this.loginEmail = signInFormData.email;
 
-
-      // Temporary Code. Remove this with backend connected code
-      if(signInFormData.email === this.tempUser.email && 
-        signInFormData.password === this.tempUser.password) {
+      this.authService.authenticationUser(signInFormData).subscribe(
+        (response : any) => {
+          let data: LoginResponse = response;
+          this.authCacheService.setToken(data.token);
           this.authCacheService.setLoggedIn();
+          
           this.router.navigate(['/']);
+        },
+        (error : any) => {
+          this.authCacheService.clearLoggedIn();
+          this.errorStatus = "Email or Password is wrong. Please try again !"; 
         }
-      else {
-        this.authCacheService.clearLoggedIn();
-        this.errorStatus = "Email or Password is wrong. Please try again !";  
-        }
-      }
+      );
     }
   }
+}
