@@ -18,20 +18,4 @@ export class BaseComponent implements OnInit {
   ngOnInit(): void {
   }
 
- toggleMenu() {
-   if(this.sideMenuClass === "side-menu") {
-      this.sideMenuClass = "toggled-2";
-      this.bodyClass = "menu-toggled";
-    
-      const sideBar = document.querySelector<HTMLElement>('body main .menu-full')!;
-      sideBar.style.marginLeft = '50px';
-   }
-   else {
-      this.sideMenuClass = "side-menu";
-      this.bodyClass = "menu-full";
-
-      const sideBar = document.querySelector<HTMLElement>('body main .menu-toggled')!;
-      sideBar.style.marginLeft = '300px';
-   }
- }
 }

@@ -1,13 +1,72 @@
 <!--Main Navigation-->
 <header>
     <farmfresh-header></farmfresh-header>
+
 </header>
 <body>
-    <main class="container-fluid">
-        <farmfresh-sidebar (onMenuChange)="toggleMenu()" [sideMenuClass]="sideMenuClass"></farmfresh-sidebar>  
-        <div [class]="bodyClass" class="pt-3 ps-3">
-          <router-outlet></router-outlet>
+    <div class="row banner">
+        <img src="../../../../../assets/Banner Photo.jpg"
+        height="100%"
+        width="100%"
+        alt="">
+    </div>
+
+    <div class="row promotion">
+        <div class="col-6">
+            <div class="slogan">
+                <h1>FRESH FOOD FOR <br/> A FRESHER YOU</h1>  <br/> <br/>
+                <h3> Quality food, quality life.</h3>
+            </div>
         </div>
-    </main>
+        <div class="col-6">
+            <img src="../../../../../assets/Side image.png"
+            height="200px"
+            width="500px"
+            alt="">
+        </div>
+
+        <div class="col-4">
+            <div class="promotional-img">
+                <img src="../../../../../assets/clock.png"
+                height=""
+                width="120px"
+                alt="200px"> <br/> <br/>
+
+                <div  style="margin-left: -40px;">
+                    <h3>Online anywhere</h3>
+                </div>
+            </div>"
+        </div>
+
+        <div class="col-4">
+            <div class="promotional-img">
+                <img src="../../../../../assets/delivery-truck.png"
+                height="120px"
+                width="200px"
+                alt=""> <br/> <br/>
+
+                <div>
+                    <h3>Fast Delivery</h3>
+                </div>
+            </div>"
+        </div>
+        <div class="col-4">
+            <div class="promotional-img">
+                <img src="../../../../../assets/support.png"
+                height="120px"
+                width="200px"
+                alt=""> <br/> <br/>
+
+                <div>
+                    <h3>24/7 Support</h3>
+                </div>
+            </div>"
+        </div>
+    </div>
+
+    <div class="row">
+        <router-outlet></router-outlet>
+    </div>
+      <!-- /#wrapper -->
 </body>
   

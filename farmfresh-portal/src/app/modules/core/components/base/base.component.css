@@ -1,28 +1,17 @@
-body {
-    background-color: #fbfbfb;
-  }
-  @media (min-width: 0px) {
-    body main .menu-full {
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      margin-left: 300px;
-    }
+.banner{
+  margin-top: 11vh;
+  height:581px;
+}
 
-    body main .menu-toggled {
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      margin-left: 50px;
-    }
+.promotion{
+  margin-top: 6vh;
+  height:581px;
+}
 
-    body main .menu-toggled ~ #wrapper.toggled-2 #sidebar-wrapper:hover {
-      -webkit-transition: all 0.5s ease;
-      -moz-transition: all 0.5s ease;
-      -o-transition: all 0.5s ease;
-      transition: all 0.5s ease;
-      margin-left: 300px;
-    }
-  }
+.slogan{
+  margin-left:120px;
+}
+
+.promotional-img{
+  margin-left:120px;
+}

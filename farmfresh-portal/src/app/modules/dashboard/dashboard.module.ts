@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DefaultComponent } from './components/default/default.component';
+import { ShoppingComponent } from './components/shopping/shopping.component';
 
 
 @NgModule({
   declarations: [
-    DefaultComponent
+    ShoppingComponent
   ],
   imports: [
     CommonModule,
