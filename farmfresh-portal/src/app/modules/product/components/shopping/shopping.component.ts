@@ -15,6 +15,7 @@ export class ShoppingComponent implements OnInit {
   total: number = 0;
   page: number = 1;
   itemPerPage: number = 10;
+  categorySearchId: number = 0; 
   pageSize: Promise<any> = new Promise((resolve) => resolve(this.itemPerPage));
 
   categories: CategoryResponse[] = [];
@@ -28,23 +29,30 @@ export class ShoppingComponent implements OnInit {
     this.loadPaginatedProductsData();
   }
 
-  loadPage(page : any) {
+  loadProductsPage(page : any) {
     this.productService.getAllPaginatedProducts(page,
-       this.itemPerPage)
+       this.itemPerPage,
+       this.categorySearchId)
    .subscribe((response: any) => {
      this.products = response.products;
      this.products.map((product => 
         product.imageBase64 = "data:image/jpg;base64," + product.imageBase64));
-        
+
      this.total = response.pagingInfo.total;
 
      this.page = this.page < Math.round(this.total/this.itemPerPage) ?
         this.page + 1 : 1;
    });
   }
+  
+  loadProductsByCategory(categoryId: number) {
+    console.log('hello')
+    this.categorySearchId = categoryId;
+    this.loadProductsPage(1);
+  }
 
   loadPaginatedProductsData() {
-    this.loadPage(this.page);
+    this.loadProductsPage(this.page);
   }
 
   loadAllCategories() {

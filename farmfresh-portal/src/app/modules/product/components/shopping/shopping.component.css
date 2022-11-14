@@ -1,30 +1,36 @@
 #sidebar-nav {
     width: 250px;
-    padding-top: 20%;;
+    padding-top: 15%;
  }
 
-.product-page{
-    background-color: rgba(244, 239, 239, 0.703);
-}
-
 .sidebar-area{
-    background-color:  #f0f2f2e7;
+    margin-top: -12px;
+    background-color: rgb(228, 228, 228);
 }
 
 .list-group-item{
-    background-color: #f0f2f2e7;
+    background-color: rgb(228, 228, 228);
 }
 
 .list-group-item > span{
     margin-left: 15%;
 }
 
+#sidebar-nav a:hover {
+    box-shadow: inset 250px 0 0 0 #54b3d6;
+    color: white;
+}
 
 
 /* products style*/
 
+.product-page{
+    padding-top: 1%;
+    background-color:rgb(236, 240, 241);
+}
+
 .card{
-    height:440px;
+    height:420px;
     width: 350px;
     margin-bottom: 10%;
     border-radius: 4px;
@@ -33,6 +39,7 @@
     transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
     cursor: pointer;
 }
+
 .card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
