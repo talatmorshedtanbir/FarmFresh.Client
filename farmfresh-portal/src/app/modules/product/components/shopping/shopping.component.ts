@@ -1,3 +1,4 @@
+import { ProductService } from './../../services/product.service';
 import { ProductResponse } from './../../models/product-response';
 import { CategoryService } from './../../services/category.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,8 @@ export class ShoppingComponent implements OnInit {
   categories: CategoryResponse[] = [];
   products: ProductResponse[] = [];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private categoryService: CategoryService,
+    private productService: ProductService) { }
 
   ngOnInit(): void {
     this.loadAllCategories();
@@ -27,9 +29,22 @@ export class ShoppingComponent implements OnInit {
   }
 
   loadPage(page : any) {
+    this.productService.getAllPaginatedProducts(page,
+       this.itemPerPage)
+   .subscribe((response: any) => {
+     this.products = response.products;
+     this.products.map((product => 
+        product.imageBase64 = "data:image/jpg;base64," + product.imageBase64));
+        
+     this.total = response.pagingInfo.total;
+
+     this.page = this.page < Math.round(this.total/this.itemPerPage) ?
+        this.page + 1 : 1;
+   });
   }
 
   loadPaginatedProductsData() {
+    this.loadPage(this.page);
   }
 
   loadAllCategories() {

@@ -24,8 +24,9 @@
 /* products style*/
 
 .card{
+    height:440px;
+    width: 350px;
     margin-bottom: 10%;
-
     border-radius: 4px;
     background: #fff;
     box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);

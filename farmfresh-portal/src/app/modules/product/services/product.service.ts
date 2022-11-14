@@ -10,18 +10,21 @@ import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class ProductService {
   private urlSuffix: string;
   
   constructor(private httpClient: HttpClientService,
     private router: Router,) {
-    this.urlSuffix = environment.urls.auth_server_url+"categories";
+    this.urlSuffix = environment.urls.auth_server_url+"products";
   }
 
-  getAllCategories(): Observable<any> {
+  getAllPaginatedProducts(pageNo: number,
+    pageSize: number): Observable<any> {
     try {
-      return this.httpClient
-        .get(`${this.urlSuffix}`)
+      let queryUrl =`${this.urlSuffix}/paginated?pageNumber=${pageNo}&pageSize=${pageSize}`;
+
+      return this.httpClient    
+        .get(queryUrl)
         .pipe(tap(), catchError(this.handleError));
     } catch (e) {
       throw e;
