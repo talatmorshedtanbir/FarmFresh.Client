@@ -35,6 +35,14 @@ export class AuthCacheService {
     this.cacheService.clearCache();
   }
 
+  getUserEmail() {
+    return this.cacheService.getItem('userEmail')!;
+  }
+
+  setUserEmail(email:string) {
+    this.cacheService.setItem('userEmail', email);
+  }
+
   getToken() {
     return this.cacheService.getItem('token')!;
   }

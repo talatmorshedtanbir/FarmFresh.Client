@@ -87,7 +87,9 @@ export class LoginComponent implements OnInit {
       this.authService.authenticationUser(signInFormData).subscribe(
         (response : any) => {
           let data: LoginResponse = response;
+
           this.authCacheService.setToken(data.token);
+          this.authCacheService.setUserEmail(data.email);
           this.authCacheService.setLoggedIn();
           
           this.router.navigate(['/']);
