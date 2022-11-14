@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DefaultComponent } from './components/default/default.component';
+import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
-  {path:"", component: DefaultComponent, pathMatch: "full"}
+  {path:"", component: ProductComponent, pathMatch: "full"}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class ShoppingRoutingModule { }

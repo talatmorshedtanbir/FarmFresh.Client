@@ -1,0 +1,77 @@
+<div class="product-page">
+  <div class="row flex-nowrap">
+      <div class="col-auto px-0 sidebar-area">
+          <div id="sidebar" class="collapse collapse-horizontal show border-end">
+              <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
+                    <a (click)="loadProductsByCategory(0)" href="javascripts:void(0)" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar">
+                        <i class="bi bi-heart"></i> 
+                        <span>
+                            <b>All Products</b>
+                        </span>
+                    </a>
+
+                    <a *ngFor="let category of categories; let i = index" (click)="loadProductsByCategory(category.id)" href="javascripts:void(0)" class="list-group-item border-end-0 d-inline-block text-truncate" data-bs-parent="#sidebar">
+                        <i class="bi bi-heart"></i> 
+                        <span>
+                            {{category.categoryName}}
+                        </span>
+                        </a>
+                </div>
+          </div>
+      </div>
+
+      <main class="col ps-md-2">
+        <section>
+            <div class="container py-4">
+              <div class="row">
+
+                <div *ngFor="let product of products; let i = index" class="col-md-12 col-lg-4 mb-5 mb-lg-0">
+                    <div class="card">
+                      <div class="d-flex justify-content-between p-3">
+                        <p class="lead mb-0">{{product.subTitle}}</p>
+                        <!-- <div
+                          class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+                          style="width: 35px; height: 35px;">
+                          <p class="text-white mb-0">x1</p>
+                        </div> -->
+                      </div>
+                      <div class="d-flex justify-content-center p-3">
+                        <img [src]= "product.imageBase64" 
+                        height="150px"
+                         width="200px" 
+                         alt="Product"
+                         loading="lazy" />
+                        </div>
+
+                      <div class="card-body">
+                        <div class="d-flex justify-content-start">
+                          <p *ngFor="let category of product.categories;" class="small"><a href="javascripts:void(0)" class="text-muted">{{category.categoryName}}</a>&nbsp;&nbsp;</p>
+                          <!-- <p class="small text-danger"><s>$1099</s></p> -->
+                        </div>
+            
+                        <div class="d-flex justify-content-between mb-3">
+                          <h5 class="mb-0">{{product.title}}</h5>
+                          <h5 class="text-dark mb-0">${{product.price}}</h5>
+                        </div>
+            
+                        <div class="d-flex justify-content-between mb-2">
+                          <!-- <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p> -->
+                          <p class="text-muted mb-0">{{product.keyInformation}}</p>
+                          <!-- <div class="ms-auto text-warning">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+      </main>
+  </div>
+</div>

@@ -17,15 +17,16 @@
 
 
     <!-- Search form -->
-    <form class="d-none d-md-flex input-group w-auto my-auto">
+    <form class="d-none d-md-flex input-group w-auto my-auto" (submit)="searchProduct()">
       <input
-             autocomplete="off"
              type="search"
              class="form-control rounded"
-             placeholder='Search for a product or brand'
+             placeholder='Search for a product'
              style="min-width: 325px"
+             name="productSearch"
+             [(ngModel)]="productName"
              />
-      <span class="input-group-text border-0 bg-primary"
+      <span class="input-group-text border-0 bg-primary"  (click)="searchProduct()"
             ><i class="fas fa-search"></i
         ></span>
     </form>
@@ -90,6 +91,8 @@
       </li>
     </ul>
   </div>
+
   <!-- Container wrapper -->
 </nav>
+
 <!-- Navbar -->

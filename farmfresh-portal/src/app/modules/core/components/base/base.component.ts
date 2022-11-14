@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ProductComponent } from 'src/app/modules/shopping/components/product/product.component';
 
 @Component({
   selector: 'farmfresh-base',
@@ -10,7 +11,9 @@ export class BaseComponent implements OnInit {
   isMenuActive: boolean = false;
   sideMenuClass = "side-menu";
   bodyClass = "menu-full";
-  
+
+  activatedComponentReference:any;
+
   constructor(
     private router: Router) { 
     }
@@ -18,20 +21,14 @@ export class BaseComponent implements OnInit {
   ngOnInit(): void {
   }
 
- toggleMenu() {
-   if(this.sideMenuClass === "side-menu") {
-      this.sideMenuClass = "toggled-2";
-      this.bodyClass = "menu-toggled";
-    
-      const sideBar = document.querySelector<HTMLElement>('body main .menu-full')!;
-      sideBar.style.marginLeft = '50px';
-   }
-   else {
-      this.sideMenuClass = "side-menu";
-      this.bodyClass = "menu-full";
 
-      const sideBar = document.querySelector<HTMLElement>('body main .menu-toggled')!;
-      sideBar.style.marginLeft = '300px';
-   }
- }
+  onActivate(activatedComponentReference : any) {
+    this.activatedComponentReference = activatedComponentReference;
+  }
+
+  searchProduct(productName : string) {
+    const productComponent = this.activatedComponentReference as ProductComponent;
+    
+    productComponent.searchByProductTitle(productName);
+  }
 }
