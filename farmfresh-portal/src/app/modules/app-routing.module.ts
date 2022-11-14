@@ -8,7 +8,7 @@ const routes: Routes = [
     path: "",
     component: BaseComponent,
     children: [
-      { path: "", loadChildren:()=> import('./dashboard/dashboard.module').then(m=> m.DashboardModule)},
+      { path: "", loadChildren:()=> import('./product/product.module').then(m=> m.ProductModule)},
     ],
     canActivate: [AuthGuard]
   },

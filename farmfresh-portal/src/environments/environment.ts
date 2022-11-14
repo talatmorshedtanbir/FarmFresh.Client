@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   urls: {
-    api_base_url: "https://localhost:5129/",
-    auth_server_url: "https://localhost:7273/",
+    api_base_url: "https://localhost:5129/api/v1/",
+    auth_server_url: "https://localhost:7273/api/v1/",
   },
 };
 

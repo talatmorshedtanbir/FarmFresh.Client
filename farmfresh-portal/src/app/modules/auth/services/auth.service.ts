@@ -14,18 +14,18 @@ import { AuthCacheService } from './auth-cache.service';
 export class AuthService {
   isSignIn = new EventEmitter<boolean>();
   redirectUrl:string | null = null;
-  private url: string;
+  private urlSuffix: string;
   
   constructor(private httpClient: HttpClientService,
     private authCacheService: AuthCacheService,
     private router: Router,) {
-    this.url = environment.urls.auth_server_url+"api/v1/auth";
+    this.urlSuffix = environment.urls.auth_server_url+"auth";
   }
 
   authenticationUser(userDetails : any) {
     try {  
       return this.httpClient
-        .postWithUrl(`${this.url}`, userDetails)
+        .postWithUrl(`${this.urlSuffix}`, userDetails)
         .pipe(
           tap(() => {
             this.isSignIn.emit(true)
@@ -41,7 +41,7 @@ export class AuthService {
   forgotPassword(forgotPasswordRequest : any) {
     try {  
       return this.httpClient
-        .postWithUrl(`${this.url}/forgotpassword`, forgotPasswordRequest)
+        .postWithUrl(`${this.urlSuffix}/forgotpassword`, forgotPasswordRequest)
         .pipe(
           tap(() => {
             this.isSignIn.emit(true)
