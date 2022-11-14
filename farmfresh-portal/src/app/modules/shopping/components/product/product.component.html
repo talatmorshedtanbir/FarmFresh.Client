@@ -25,7 +25,7 @@
             <div class="container py-4">
               <div class="row">
 
-                <div *ngFor="let product of products; let i = index" class="col-md-12 col-lg-4 mb-5 mb-lg-0">
+                <div *ngFor="let product of products; let i = index" class="col-md-12 col-lg-4 mb-5 mb-lg-0" (click)="[loadModalProduct(product), openProductModal(productModal)]">
                     <div class="card">
                       <div class="d-flex justify-content-between p-3">
                         <p class="lead mb-0">{{product.subTitle}}</p>
@@ -75,3 +75,58 @@
       </main>
   </div>
 </div>
+
+
+<ng-template #productModal let-modal>
+  <div class="modalCard rounded">
+    <div class="d-flex justify-content-center p-3">
+      <p class="lead mb-0">{{modalProduct.subTitle}}</p>
+      <!-- <div
+        class="bg-info rounded-circle d-flex align-items-center justify-content-center shadow-1-strong"
+        style="width: 35px; height: 35px;">
+        <p class="text-white mb-0">x1</p>
+      </div> -->
+    </div>
+    <div class="d-flex justify-content-center p-3">
+      <img [src]= "modalProduct.imageBase64" 
+      height="150px"
+       width="200px" 
+       alt="Product"
+       loading="lazy" />
+      </div>
+
+    <div class="card-body">
+      <div class="d-flex justify-content-start">
+        <p *ngFor="let category of modalProduct.categories;" class="small"><a href="javascripts:void(0)" class="text-muted">{{category.categoryName}}</a>&nbsp;&nbsp;</p>
+        <!-- <p class="small text-danger"><s>$1099</s></p> -->
+      </div>
+
+      <div class="d-flex justify-content-between mb-3">
+        <h5 class="mb-0">{{modalProduct.title}}</h5>
+        <h5 class="text-dark mb-0">${{modalProduct.price}}</h5>
+      </div>
+
+      <div class="d-flex justify-content-between mb-2">
+
+        <!-- <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p> -->
+        <p class="text-info mb-0 small">{{modalProduct.keyInformation}}</p>
+      </div>
+      <div class="d-flex justify-content-between mb-2">
+        <!-- <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p> -->
+        <p class="text-muted mb-0">{{modalProduct.description}}</p>
+        <!-- <div class="ms-auto text-warning">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+      </div>
+</ng-template>

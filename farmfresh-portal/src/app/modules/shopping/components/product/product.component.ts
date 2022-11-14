@@ -4,6 +4,7 @@ import { CategoryService } from '../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { CategoryResponse } from '../../models/category-response';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'farmfresh-product',
@@ -11,6 +12,11 @@ import { CategoryResponse } from '../../models/category-response';
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
+
+  modalOptions: any= {
+    backdrop:'static',
+    backdropClass:'customBackdrop'
+  };
 
   total: number = 0;
   page: number = 1;
@@ -21,9 +27,21 @@ export class ProductComponent implements OnInit {
 
   categories: CategoryResponse[] = [];
   products: ProductResponse[] = [];
+  modalProduct: ProductResponse = {
+    id: 0,
+    title: '',
+    subTitle: '',
+    keyInformation: '',
+    price: 0,
+    imageBase64: '',
+    description: '',
+    country: '',
+    categories: []
+  };
 
   constructor(private categoryService: CategoryService,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private modalService: NgbModal,) { }
 
   ngOnInit(): void {
     this.loadAllCategories();
@@ -68,5 +86,17 @@ export class ProductComponent implements OnInit {
       this.categories = response;
     }, err => {      
     });
+  }
+
+  openProductModal(content: any){
+    this.modalService.open(content, this.modalOptions);
+  }
+
+  loadModalProduct(product: ProductResponse) {
+    this.modalProduct = product;
+  }
+
+  closeModal() {
+    this.modalService.dismissAll();
   }
 }
