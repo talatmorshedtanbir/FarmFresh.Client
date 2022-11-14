@@ -68,13 +68,13 @@ export class ProductComponent implements OnInit {
   loadProductsByCategory(categoryId: number) {
     this.categorySearchId = categoryId;
     this.loadProductsPage(1);
+    this.closeModal();
   }
 
   searchByProductTitle(productTitle: string) {
     this.searchText = productTitle;
     console.log(this.searchText)
-    this.loadProductsPage(1);
-    
+    this.loadProductsPage(1); 
   }
 
   loadPaginatedProductsData() {
