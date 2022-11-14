@@ -1,11 +1,11 @@
 .banner{
   margin-top: 11vh;
-  height:581px;
+  height:100vh;
 }
 
 .promotion{
   margin-top: 6vh;
-  height:581px;
+  height:100vh;
 }
 
 .slogan{
@@ -14,4 +14,8 @@
 
 .promotional-img{
   margin-left:120px;
+}
+
+body{
+  overflow-x: hidden;
 }
