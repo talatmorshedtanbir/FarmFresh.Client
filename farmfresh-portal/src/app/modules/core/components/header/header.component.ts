@@ -7,9 +7,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private authService: AuthService) { }
+  @Output() headerEmit = new EventEmitter<string>();
+  productName: string = '';
+
+  constructor(private authService: AuthService) { 
+
+  }
 
   ngOnInit(): void {
+  }
+
+  searchProduct() {
+    this.headerEmit.emit(this.productName);
   }
 
   logout() {

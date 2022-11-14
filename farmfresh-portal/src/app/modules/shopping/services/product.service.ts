@@ -20,9 +20,14 @@ export class ProductService {
 
   getAllPaginatedProducts(pageNo: number,
     pageSize: number,
+    searchText: string,
     categoryId: number): Observable<any> {
     try {
       let queryUrl =`${this.urlSuffix}/paginated?pageNumber=${pageNo}&pageSize=${pageSize}&categoryId=${categoryId}`;
+
+      if(searchText !== "" && searchText !== undefined) {
+        queryUrl += `&searchText=${searchText}`;
+      }
 
       return this.httpClient    
         .get(queryUrl)

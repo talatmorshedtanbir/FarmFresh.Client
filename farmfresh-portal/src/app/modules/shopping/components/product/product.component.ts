@@ -15,8 +15,9 @@ export class ProductComponent implements OnInit {
   total: number = 0;
   page: number = 1;
   itemPerPage: number = 10;
-  categorySearchId: number = 0; 
   pageSize: Promise<any> = new Promise((resolve) => resolve(this.itemPerPage));
+  searchText: string = "";
+  categorySearchId: number = 0; 
 
   categories: CategoryResponse[] = [];
   products: ProductResponse[] = [];
@@ -32,6 +33,7 @@ export class ProductComponent implements OnInit {
   loadProductsPage(page : any) {
     this.productService.getAllPaginatedProducts(page,
        this.itemPerPage,
+       this.searchText,
        this.categorySearchId)
    .subscribe((response: any) => {
      this.products = response.products;
@@ -46,9 +48,15 @@ export class ProductComponent implements OnInit {
   }
   
   loadProductsByCategory(categoryId: number) {
-    console.log('hello')
     this.categorySearchId = categoryId;
     this.loadProductsPage(1);
+  }
+
+  searchByProductTitle(productTitle: string) {
+    this.searchText = productTitle;
+    console.log(this.searchText)
+    this.loadProductsPage(1);
+    
   }
 
   loadPaginatedProductsData() {
