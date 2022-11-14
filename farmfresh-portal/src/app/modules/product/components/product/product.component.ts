@@ -1,16 +1,16 @@
-import { ProductService } from './../../services/product.service';
-import { ProductResponse } from './../../models/product-response';
-import { CategoryService } from './../../services/category.service';
+import { ProductService } from '../../services/product.service';
+import { ProductResponse } from '../../models/product-response';
+import { CategoryService } from '../../services/category.service';
 import { Component, OnInit } from '@angular/core';
 import * as _ from 'lodash';
 import { CategoryResponse } from '../../models/category-response';
 
 @Component({
-  selector: 'farmfresh-shopping',
-  templateUrl: './shopping.component.html',
-  styleUrls: ['./shopping.component.css']
+  selector: 'farmfresh-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css']
 })
-export class ShoppingComponent implements OnInit {
+export class ProductComponent implements OnInit {
 
   total: number = 0;
   page: number = 1;

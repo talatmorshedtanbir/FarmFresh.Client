@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ProductComponent } from 'src/app/modules/product/components/product/product.component';
 
 @Component({
   selector: 'farmfresh-base',
@@ -11,6 +12,8 @@ export class BaseComponent implements OnInit {
   sideMenuClass = "side-menu";
   bodyClass = "menu-full";
   
+  activatedComponentReference:any
+
   constructor(
     private router: Router) { 
     }
@@ -18,4 +21,13 @@ export class BaseComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  onActivate(activatedComponentReference : any) {
+    this.activatedComponentReference = activatedComponentReference;
+  }
+
+  onBtnClick() {
+    const productComponent = this.activatedComponentReference as ProductComponent;
+    //productComponent.childFunction();
+ }
 }
