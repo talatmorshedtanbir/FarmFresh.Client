@@ -20,7 +20,7 @@ export class ProductComponent implements OnInit {
 
   total: number = 0;
   page: number = 1;
-  itemPerPage: number = 10;
+  itemPerPage: number = 1;
   pageSize: Promise<any> = new Promise((resolve) => resolve(this.itemPerPage));
   searchText: string = "";
   categorySearchId: number = 0; 
@@ -59,9 +59,6 @@ export class ProductComponent implements OnInit {
         product.imageBase64 = "data:image/jpg;base64," + product.imageBase64));
 
      this.total = response.pagingInfo.total;
-
-     this.page = this.page < Math.round(this.total/this.itemPerPage) ?
-        this.page + 1 : 1;
    });
   }
   

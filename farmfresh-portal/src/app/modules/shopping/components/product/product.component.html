@@ -70,6 +70,18 @@
                 </div>
 
               </div>
+              <div class="row">
+                <div class="col-md-8">
+                    <label class="float-left">Showing {{ total == 0 ? 0 : (page - 1) * itemPerPage + 1 }} to
+                        {{
+                        page * itemPerPage < total ? (page - 1) * itemPerPage + itemPerPage : total }} of {{ total }}
+                            entries</label>
+                            <ngb-pagination class="d-flex float-right" [collectionSize]="total" [(page)]="page"
+                                [pageSize]="pageSize | async" [maxSize]="5" [rotate]="true" [ellipses]="true"
+                                [boundaryLinks]="true" (pageChange)="loadProductsPage($event)">
+                            </ngb-pagination>
+                </div>
+            </div>
             </div>
           </section>
       </main>
@@ -125,8 +137,7 @@
     </div>
   </div>
 
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
-      </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+  </div>
 </ng-template>
